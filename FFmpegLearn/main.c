@@ -14,6 +14,8 @@
 #include "dirop.h"
 #include "formatop.h"
 
+#include "sdl_op.h"
+
 
 
 
@@ -34,11 +36,13 @@ int main(int argc, const char * argv[]) {
 //    crop( "/Users/pinky/avlearn/avfiles/beauty.mp4", 5, 5 , "/Users/pinky/avlearn/avfiles/crop.flv");
     
     //AV_CODEC_ID_AAC
-    show_audio_codec_info_by_id( AV_CODEC_ID_MP2 );
+//    show_audio_codec_info_by_id( AV_CODEC_ID_MP2 );
     
 //    decode_audio( "/Users/pinky/avlearn/avfiles/beauty.mp4", "/Users/pinky/avlearn/avfiles/beauty.pcm");
     
-    encode_audio("/Users/pinky/avlearn/avfiles/test.mp2");
+//    encode_audio("/Users/pinky/avlearn/avfiles/test.mp2");
+    
+    play_audio_pcm( "/Users/pinky/avlearn/avfiles/beauty.pcm",  48000, 2, AUDIO_F32LSB  );
     return 0;
 }
 

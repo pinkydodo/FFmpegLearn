@@ -265,11 +265,11 @@ int encode_audio(const char* outfilePath )
         
         for( int j  = 0 ; j < c->frame_size; j++ )
         {
-            samples[  c->frame_size * j  ] = (int)(sin(t) * 10000 );
+            samples[  c->channels * j  ] = (int)(sin(t) * 10000 );
             
             for( int k = 1 ; k < c->channels ; k++ )
             {
-                samples[c->frame_size*j + k ] = samples[c->frame_size*j];
+                samples[c->channels*j + k ] = samples[c->channels*j];
             }
             
             t+= tincr;

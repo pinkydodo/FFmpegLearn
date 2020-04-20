@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE10B6C2244DE2E500C73DFC /* sdl_op.c in Sources */ = {isa = PBXBuildFile; fileRef = BE10B6C1244DE2E500C73DFC /* sdl_op.c */; };
+		BE10B6C4244DF62500C73DFC /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE10B6C3244DF62500C73DFC /* libSDL2.a */; };
 		BE13786F2441A35F0001CFB4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13786E2441A35F0001CFB4 /* main.c */; };
 		BEB743D62441B5E200111869 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1378782441A45E0001CFB4 /* libavformat.a */; };
 		BEB743D92441BC0100111869 /* dirop.c in Sources */ = {isa = PBXBuildFile; fileRef = BEB743D82441BC0100111869 /* dirop.c */; };
@@ -29,6 +31,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE10B6C0244DE2E500C73DFC /* sdl_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdl_op.h; sourceTree = "<group>"; };
+		BE10B6C1244DE2E500C73DFC /* sdl_op.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sdl_op.c; sourceTree = "<group>"; };
+		BE10B6C3244DF62500C73DFC /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../usr/local/lib/libSDL2.a; sourceTree = "<group>"; };
 		BE13786B2441A35F0001CFB4 /* FFmpegLearn */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FFmpegLearn; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE13786E2441A35F0001CFB4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		BE1378762441A4590001CFB4 /* libavutil.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavutil.a; path = ../../../../../usr/local/lib/libavutil.a; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE10B6C4244DF62500C73DFC /* libSDL2.a in Frameworks */,
 				BEB743E224432C2B00111869 /* libavutil.a in Frameworks */,
 				BEB743E124432C2100111869 /* libavcodec.a in Frameworks */,
 				BEB743D62441B5E200111869 /* libavformat.a in Frameworks */,
@@ -77,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				BE13786E2441A35F0001CFB4 /* main.c */,
+				BE10B6C0244DE2E500C73DFC /* sdl_op.h */,
+				BE10B6C1244DE2E500C73DFC /* sdl_op.c */,
 				BEB743D72441BC0100111869 /* dirop.h */,
 				BEB743D82441BC0100111869 /* dirop.c */,
 				BEB743DA2441C5CC00111869 /* formatop.h */,
@@ -90,6 +98,7 @@
 		BE1378752441A4590001CFB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE10B6C3244DF62500C73DFC /* libSDL2.a */,
 				BEB743E024432C2100111869 /* libavcodec.a */,
 				BE1378782441A45E0001CFB4 /* libavformat.a */,
 				BE1378762441A4590001CFB4 /* libavutil.a */,
@@ -156,6 +165,7 @@
 			files = (
 				BEB743DC2441C5CC00111869 /* formatop.c in Sources */,
 				BEB743D92441BC0100111869 /* dirop.c in Sources */,
+				BE10B6C2244DE2E500C73DFC /* sdl_op.c in Sources */,
 				BE13786F2441A35F0001CFB4 /* main.c in Sources */,
 				BEB743DF2442ADDF00111869 /* codecop.c in Sources */,
 			);
@@ -279,7 +289,11 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9YQ3S558EJ;
 				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/SDL2,
+				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pinky.extraaudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,7 +307,11 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 9YQ3S558EJ;
 				ENABLE_HARDENED_RUNTIME = YES;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/SDL2,
+				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib/;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pinky.extraaudio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
