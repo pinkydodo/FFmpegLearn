@@ -22,4 +22,7 @@
 int play_audio_pcm( char* filename, int samplerate, int channel, SDL_AudioFormat sample_fmt  );
 
 
+int play_video_yuv( char* filename, int vwidth , int vheight );
+
+
 #endif /* sdl_op_h */

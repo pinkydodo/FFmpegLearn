@@ -42,7 +42,9 @@ int main(int argc, const char * argv[]) {
     
 //    encode_audio("/Users/pinky/avlearn/avfiles/test.mp2");
     
-    play_audio_pcm( "/Users/pinky/avlearn/avfiles/beauty.pcm",  48000, 2, AUDIO_F32LSB  );
+//    play_audio_pcm( "/Users/pinky/avlearn/avfiles/beauty.pcm",  48000, 2, AUDIO_F32LSB  );
+    
+    play_video_yuv( "/Users/pinky/avlearn/avfiles/beauty.yuv", 640 , 336 );
     return 0;
 }
 
