@@ -147,7 +147,7 @@ int play_video_yuv( char* filename, int vwidth , int vheight )
     
     unsigned int video_buff_len = 0;
     uint8_t video_buf[ BLOCK_SIZE ];
-    unsigned int remain_len = 0;
+    int remain_len = 0;
     unsigned int blank_space_len = 0;
     
     if( SDL_Init( SDL_INIT_VIDEO ))
@@ -165,7 +165,7 @@ int play_video_yuv( char* filename, int vwidth , int vheight )
         return -1;
     }
     
-    render = SDL_CreateRenderer( &win,  -1 ,  0 );
+    render = SDL_CreateRenderer( win,  -1 ,  0 );
     
     //IYUV: Y + U + V  (3 planes)
     //YV12: Y + V + U  (3 planes)
@@ -182,7 +182,7 @@ int play_video_yuv( char* filename, int vwidth , int vheight )
         return -1;
     }
     
-    if( video_buff_len = fread( video_fd, 1 , BLOCK_SIZE,  video_fd) <= 0 )
+    if( (video_buff_len = fread( video_buf, 1 , BLOCK_SIZE,  video_fd) ) <= 0 )
     {
         fprintf(stderr, "Failed to read data from yuv file!\n");
         return -1;
@@ -190,22 +190,36 @@ int play_video_yuv( char* filename, int vwidth , int vheight )
     
     video_pos = video_buf;
     video_end = video_buf + video_buff_len;
+    remain_len = 0;
+    blank_space_len = BLOCK_SIZE - video_buff_len;
     
+    float t = yuv_frame_len * 1.0;
+    printf("frame_len:%d, %f", yuv_frame_len, BLOCK_SIZE/t );
     
     timer_thread = SDL_CreateThread( refresh_video_timer, NULL, NULL );
+    
+    rect.x = 0;
+    rect.y = 0;
+    rect.w = w_width;
+    rect.h = w_height;
     
     //wait事件
     do{
         SDL_WaitEvent( &evt );
         if( evt.type == REFRESH_EVENT )
         {
+            if( thread_exit == 1 ){
+                continue;
+            }
+            printf(" refresh!\n");
             if( video_pos + yuv_frame_len > video_end )
             {
                 //移动剩下的到一开始
                 remain_len = video_end - video_pos;
                 if( remain_len && !blank_space_len )
                 {
-                    memcpy( video_buf, video_pos, remain_len );
+//                    memcpy( video_buf, video_pos, remain_len );
+                    memmove( video_buf, video_pos,  remain_len );
                     
                     blank_space_len = BLOCK_SIZE - remain_len;
                     video_pos = video_buf;
@@ -219,7 +233,13 @@ int play_video_yuv( char* filename, int vwidth , int vheight )
                     blank_space_len = BLOCK_SIZE;
                 }
                 //再读一个buff
-                if( video_buff_len = fread( video_end, 1 , blank_space_len ,video_fd )){
+                if( (video_buff_len = fread( video_end, 1 , blank_space_len ,video_fd ) )< 0 ){
+                    fprintf( stderr, "err , exit thread ");
+                    thread_exit = 1;
+                    continue;  // to wait event for exiting
+                }
+                else if( video_buff_len == 0 )
+                {
                     fprintf( stderr, "eof , exit thread ");
                     thread_exit = 1;
                     continue;  // to wait event for exiting
@@ -230,24 +250,24 @@ int play_video_yuv( char* filename, int vwidth , int vheight )
                 }
             }
             
-            SDL_UpdateTexture( texture, NULL, video_pos, vwidth);
-            
-            rect.x = 0;
-            rect.y = 0;
-            rect.w = w_width;
-            rect.h = w_height;
-            
-            SDL_RenderClear( render );
-            SDL_RenderCopy( render, texture,  NULL,  &rect );
-            SDL_RenderPresent( render );
-            
+            if( thread_exit != 1 )
+            {
+                SDL_UpdateTexture( texture, NULL, video_pos, vwidth);
+                
+                SDL_RenderClear( render );
+                SDL_RenderCopy( render, texture,  NULL,  &rect );
+                SDL_RenderPresent( render );
+                video_pos += yuv_frame_len;
+            }
         }
-        else if( evt.type = SDL_QUIT)
+        else if( evt.type == SDL_QUIT)
         {
+            printf(" sdl quit !");
             thread_exit = 1;
         }
         else if( evt.type == QUIT_EVENT )
         {
+            printf(" quit !");
             break;
         }
     }while(1);

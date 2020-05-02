@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE07A04F245D08C500866E34 /* video_player.c in Sources */ = {isa = PBXBuildFile; fileRef = BE07A04E245D08C500866E34 /* video_player.c */; };
+		BE07A051245D17BD00866E34 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE07A050245D17BD00866E34 /* libswscale.a */; };
+		BE07A053245D17CB00866E34 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE07A052245D17CB00866E34 /* libswresample.a */; };
 		BE10B6C2244DE2E500C73DFC /* sdl_op.c in Sources */ = {isa = PBXBuildFile; fileRef = BE10B6C1244DE2E500C73DFC /* sdl_op.c */; };
 		BE10B6C4244DF62500C73DFC /* libSDL2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE10B6C3244DF62500C73DFC /* libSDL2.a */; };
 		BE13786F2441A35F0001CFB4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = BE13786E2441A35F0001CFB4 /* main.c */; };
@@ -31,6 +34,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE07A04D245D08C500866E34 /* video_player.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = video_player.h; sourceTree = "<group>"; };
+		BE07A04E245D08C500866E34 /* video_player.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = video_player.c; sourceTree = "<group>"; };
+		BE07A050245D17BD00866E34 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswscale.a; path = ../../../../../usr/local/lib/libswscale.a; sourceTree = "<group>"; };
+		BE07A052245D17CB00866E34 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libswresample.a; path = ../../../../../usr/local/lib/libswresample.a; sourceTree = "<group>"; };
 		BE10B6C0244DE2E500C73DFC /* sdl_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = sdl_op.h; sourceTree = "<group>"; };
 		BE10B6C1244DE2E500C73DFC /* sdl_op.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = sdl_op.c; sourceTree = "<group>"; };
 		BE10B6C3244DF62500C73DFC /* libSDL2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDL2.a; path = ../../../../../usr/local/lib/libSDL2.a; sourceTree = "<group>"; };
@@ -52,8 +59,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE07A051245D17BD00866E34 /* libswscale.a in Frameworks */,
 				BE10B6C4244DF62500C73DFC /* libSDL2.a in Frameworks */,
 				BEB743E224432C2B00111869 /* libavutil.a in Frameworks */,
+				BE07A053245D17CB00866E34 /* libswresample.a in Frameworks */,
 				BEB743E124432C2100111869 /* libavcodec.a in Frameworks */,
 				BEB743D62441B5E200111869 /* libavformat.a in Frameworks */,
 			);
@@ -91,6 +100,8 @@
 				BEB743DB2441C5CC00111869 /* formatop.c */,
 				BEB743DE2442ADDF00111869 /* codecop.c */,
 				BEB743DD2442ADDF00111869 /* codecop.h */,
+				BE07A04D245D08C500866E34 /* video_player.h */,
+				BE07A04E245D08C500866E34 /* video_player.c */,
 			);
 			path = FFmpegLearn;
 			sourceTree = "<group>";
@@ -98,6 +109,8 @@
 		BE1378752441A4590001CFB4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE07A052245D17CB00866E34 /* libswresample.a */,
+				BE07A050245D17BD00866E34 /* libswscale.a */,
 				BE10B6C3244DF62500C73DFC /* libSDL2.a */,
 				BEB743E024432C2100111869 /* libavcodec.a */,
 				BE1378782441A45E0001CFB4 /* libavformat.a */,
@@ -167,6 +180,7 @@
 				BEB743D92441BC0100111869 /* dirop.c in Sources */,
 				BE10B6C2244DE2E500C73DFC /* sdl_op.c in Sources */,
 				BE13786F2441A35F0001CFB4 /* main.c in Sources */,
+				BE07A04F245D08C500866E34 /* video_player.c in Sources */,
 				BEB743DF2442ADDF00111869 /* codecop.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

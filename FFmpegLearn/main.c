@@ -16,6 +16,8 @@
 
 #include "sdl_op.h"
 
+#include "video_player.h"
+
 
 
 
@@ -44,7 +46,8 @@ int main(int argc, const char * argv[]) {
     
 //    play_audio_pcm( "/Users/pinky/avlearn/avfiles/beauty.pcm",  48000, 2, AUDIO_F32LSB  );
     
-    play_video_yuv( "/Users/pinky/avlearn/avfiles/beauty.yuv", 640 , 336 );
+//    play_video_yuv( "/Users/pinky/avlearn/beauty.yuv", 640 , 336 );
+    playVideoH264( "/Users/pinky/avlearn/beauty.mp4" );
     return 0;
 }
 
